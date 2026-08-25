@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Services</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Dark background effect */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, #062b0c 0%, #020702 35%, #000 70%);
+      z-index: -1;
+    }
+
+    /* Main button */
+    .click-button {
+      padding: 22px 55px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #00ff55;
+      background: #050505;
+      border: 2px solid #00ff55;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow:
+        0 0 10px #00ff55,
+        0 0 30px rgba(0, 255, 85, 0.5);
+      transition: 0.2s;
+    }
+
+    .click-button:hover {
+      transform: scale(1.06);
+      background: #062b0c;
+      box-shadow:
+        0 0 15px #00ff55,
+        0 0 50px rgba(0, 255, 85, 0.8);
+    }
+
+    /* Dark overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    .overlay.active {
+      display: flex;
+    }
+
+    /* Main selection panel */
+    .panel {
+      width: 420px;
+      max-width: 100%;
+      background: #777;
+      border: 2px solid #aaa;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 85, 0.25);
+      position: relative;
+    }
+
+    .panel h2 {
+      margin-bottom: 25px;
+    }
+
+    .service-button {
+      width: 100%;
+      padding: 16px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .service-button:hover {
+      background: #00a83a;
+      transform: translateY(-2px);
+    }
+
+    .close-button {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* Service information panel */
+    .info-panel {
+      width: 700px;
+      max-width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #777;
+      border: 2px solid #aaa;
+      border-radius: 14px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 0 35px rgba(0, 255, 85, 0.3);
+    }
+
+    .info-panel h2 {
+      color: #00ff55;
+      margin-bottom: 20px;
+    }
+
+    .info-panel p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .info-panel ul {
+      margin: 10px 0 20px 25px;
+      line-height: 1.8;
+    }
+
+    .discord {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: #5865F2;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .discord:hover {
+      transform: scale(1.04);
+      filter: brightness(1.15);
+    }
+
+    .back-button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: #00a83a;
+    }
+
+    /* Scrollbar */
+    .info-panel::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .info-panel::-webkit-scrollbar-thumb {
+      background: #00ff55;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Main screen -->
+  <button class="click-button" onclick="openMenu()">
+    CLICK ON IT
+  </button>
+
+
+  <!-- First popup -->
+  <div class="overlay" id="menuOverlay">
+
+    <div class="panel">
+
+      <button class="close-button" onclick="closeMenu()">×</button>
+
+      <h2>Choose a Service</h2>
+
+      <button class="service-button" onclick="openXGamer()">
+        XGblox
+      </button>
+
+      <button class="service-button" onclick="openNoobMan()">
+        NoobMan
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- XGamerBlox popup -->
+  <div class="overlay" id="xgamerOverlay">
+
+    <div class="info-panel">
+
+      <button class="close-button" onclick="closeInfo('xgamerOverlay')">
+        ×
+      </button>
+
+      <h2>🎮・𝗫𝗚𝗮𝗺𝗲𝗿𝗕𝗹𝗼𝘅'𝘀 𝗚𝗿𝗶𝗻𝗱 𝗦𝗲𝗿𝘃𝗶𝗰𝗲</h2>
+
+      <p>
+        🚀 Want your Roblox account to become OP?
+        Let XGamerBlox handle the grind for you!
+      </p>
+
+      <p><strong>🎯 What I offer:</strong></p>
+
+      <ul>
+        <li>⚡ Fast & dedicated grinding</li>
+        <li>🎮 Choose the Roblox game you want</li>
+        <li>🏆 Level up, farm, and progress your account</li>
+        <li>👤 We can grind on your main account or create a new account</li>
+        <li>📦 Receive the account when the order is completed for newly created accounts</li>
+      </ul>
+
+      <p><strong>💰 Payment:</strong></p>
+
+      <p>
+        We accept Robux & in-game items from supported games.
+        We also accept invites as payment.
+      </p>
+
+      <a
+        class="discord"
+        href="https://discord.gg/UhGBSvQKWx"
+        target="_blank"
+      >
+        Join Discord
+      </a>
+
+      <p style="margin-top: 20px;">
+        Join the Discord and DM <strong>@XGblox</strong> to order.
+      </p>
+
+      <p>
+        🔥 You choose the game. And we grind it!
+      </p>
+
+      <button class="back-button" onclick="backToMenu('xgamerOverlay')">
+        ← Back
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- NoobMan popup -->
+  <div class="overlay" id="noobOverlay">
+
+    <div class="info-panel">
+
+      <button class="close-button" onclick="closeInfo('noobOverlay')">
+        ×
+      </button>
+
+      <h2>NoobMan</h2>
+
+      <p>
+        <strong>Read the rules before buying.</strong>
+      </p>
+
+      <p>
+        <strong>Blox Fruits 🥝:</strong>
+      </p>
+
+      <p>
+        I am currently selling Blox Fruits accounts, for level 700
+        (Sea 2) up to level 1500 (Sea 3) and then max level.
+      </p>
+
+      <p>
+        We can stay on any fighting style and I can get swords and guns.
+        If you want a fruit such as Venom or anything else, let me handle it!
+      </p>
+
+      <p>
+        You pay, we grind.
+      </p>
+
+      <a
+        class="discord"
+        href="https://discord.gg/UhGBSvQKWx"
+        target="_blank"
+      >
+        Join Discord
+      </a>
+
+      <p style="margin-top: 20px;">
+        Join our Discord and DM <strong>@NoobMan</strong>!
+      </p>
+
+      <button class="back-button" onclick="backToMenu('noobOverlay')">
+        ← Back
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function openMenu() {
+      document.getElementById("menuOverlay").classList.add("active");
+    }
+
+    function closeMenu() {
+      document.getElementById("menuOverlay").classList.remove("active");
+    }
+
+    function openXGamer() {
+      document.getElementById("menuOverlay").classList.remove("active");
+      document.getElementById("xgamerOverlay").classList.add("active");
+    }
+
+    function openNoobMan() {
+      document.getElementById("menuOverlay").classList.remove("active");
+      document.getElementById("noobOverlay").classList.add("active");
+    }
+
+    function closeInfo(id) {
+      document.getElementById(id).classList.remove("active");
+    }
+
+    function backToMenu(id) {
+      document.getElementById(id).classList.remove("active");
+      document.getElementById("menuOverlay").classList.add("active");
+    }
+
+    /* Close popup when clicking outside the panel */
+    document.querySelectorAll(".overlay").forEach(overlay => {
+      overlay.addEventListener("click", function(event) {
+        if (event.target === overlay) {
+          overlay.classList.remove("active");
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
